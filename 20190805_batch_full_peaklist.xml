@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <batch>
+    <batchstep method="net.sf.mzmine.modules.rawdatamethods.orderdatafiles.OrderDataFilesModule">
+        <parameter name="Raw data files" type="ALL_FILES"/>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.rawdatamethods.merge.RawFileMergeModule">
+        <parameter name="Raw data files" type="ALL_FILES"/>
+        <parameter name="Mode">MERGE SELECTED</parameter>
+        <parameter name="Grouping identifier position">AFTER LAST</parameter>
+        <parameter name="Position marker">_</parameter>
+        <parameter name="MS2 marker" selected="false"/>
+        <parameter name="Suffix to new name">_merged</parameter>
+    </batchstep>
     <batchstep method="net.sf.mzmine.modules.rawdatamethods.filtering.scanfilters.ScanFiltersModule">
-        <parameter name="Raw data files" type="GUI_SELECTED_FILES"/>
+        <parameter name="Raw data files" type="BATCH_LAST_FILES"/>
         <parameter name="Scans"/>
         <parameter name="Suffix">filtered</parameter>
         <parameter name="Filter" selected="Savitzky-Golay filter">
@@ -29,7 +40,7 @@
         </parameter>
         <parameter name="Mass detector" selected="Exact mass">
             <module name="Centroid">
-                <parameter name="Noise level"/>
+                <parameter name="Noise level">100.0</parameter>
             </module>
             <module name="Exact mass">
                 <parameter name="Noise level">300.0</parameter>
@@ -59,7 +70,7 @@
         </parameter>
         <parameter name="Mass detector" selected="Exact mass">
             <module name="Centroid">
-                <parameter name="Noise level"/>
+                <parameter name="Noise level">100.0</parameter>
             </module>
             <module name="Exact mass">
                 <parameter name="Noise level">120.0</parameter>
@@ -117,9 +128,8 @@
         <parameter name="Peak lists" type="BATCH_LAST_PEAKLISTS"/>
         <parameter name="MassList">masses filtered</parameter>
         <parameter name="Database file">
-            <current_file>D:\Daten\Library\Pigmentpos\20190730_timstof_pos_MS2.json</current_file>
-            <last_file>D:\Daten\Library\Pigmentpos\20190730_timstof_pos_MS2.json</last_file>
-            <last_file>D:\Daten\Library\Pigmentpos\20190730_timstof_pos_MS1.json</last_file>
+            <current_file>D:\git\tattoo_pigments_spectral_libraries\20190730_timstof_pos_MS2.json</current_file>
+            <last_file>D:\git\tattoo_pigments_spectral_libraries\20190730_timstof_pos_MS2.json</last_file>
         </parameter>
         <parameter name="MS level">2</parameter>
         <parameter name="Precursor m/z tolerance">
