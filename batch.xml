@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><batch>
+    <batchstep method="net.sf.mzmine.modules.rawdatamethods.peakpicking.massdetection.MassDetectionModule">
+        <parameter name="Raw data files" type="ALL_FILES"/>
+        <parameter name="Scans">
+            <ms_level>1</ms_level>
+            <scan_definition/>
+        </parameter>
+        <parameter name="Mass detector" selected="Centroid">
+            <module name="Centroid">
+                <parameter name="Noise level">100.0</parameter>
+            </module>
+            <module name="Exact mass">
+                <parameter name="Noise level">500.0</parameter>
+            </module>
+            <module name="Local maxima">
+                <parameter name="Noise level"/>
+            </module>
+            <module name="Recursive threshold">
+                <parameter name="Noise level"/>
+                <parameter name="Min m/z peak width"/>
+                <parameter name="Max m/z peak width"/>
+            </module>
+            <module name="Wavelet transform">
+                <parameter name="Noise level"/>
+                <parameter name="Scale level"/>
+                <parameter name="Wavelet window size (%)"/>
+            </module>
+        </parameter>
+        <parameter name="Mass list name">masses</parameter>
+        <parameter name="Output netCDF filename (optional)" selected="false"/>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.masslistmethods.ADAPchromatogrambuilder.ADAPChromatogramBuilderModule">
+        <parameter name="Raw data files" type="ALL_FILES"/>
+        <parameter name="Scans">
+            <ms_level>1</ms_level>
+            <scan_definition/>
+        </parameter>
+        <parameter name="Mass list">masses</parameter>
+        <parameter name="Min group size in # of scans">3</parameter>
+        <parameter name="Group intensity threshold">100.0</parameter>
+        <parameter name="Min highest intensity">1000.0</parameter>
+        <parameter name="m/z tolerance">
+            <absolutetolerance>0.0015</absolutetolerance>
+            <ppmtolerance>15.0</ppmtolerance>
+        </parameter>
+        <parameter name="Suffix">chromatograms</parameter>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.peaklistmethods.filtering.groupms2.GroupMS2Module">
+        <parameter name="Feature lists" type="BATCH_LAST_PEAKLISTS"/>
+        <parameter name="Retention time tolerance" type="percent">1.0</parameter>
+        <parameter name="m/z tolerance">
+            <absolutetolerance>0.4</absolutetolerance>
+            <ppmtolerance>5.0</ppmtolerance>
+        </parameter>
+        <parameter name="Limit by RT edges">false</parameter>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.peaklistmethods.identification.spectraldbsearch.LocalSpectralDBSearchModule">
+        <parameter name="Feature lists" type="BATCH_LAST_PEAKLISTS"/>
+        <parameter name="MassList">masses</parameter>
+        <parameter name="Database file">
+            <current_file>D:\git\tattoo_pigments_spectral_libraries\20190730_timstof_pos_MS1.json</current_file>
+            <last_file>D:\git\tattoo_pigments_spectral_libraries\20190730_timstof_pos_MS1.json</last_file>
+        </parameter>
+        <parameter name="MS level">1</parameter>
+        <parameter name="Check all scans (only for MS2)">false</parameter>
+        <parameter name="Precursor m/z tolerance">
+            <absolutetolerance>0.05</absolutetolerance>
+            <ppmtolerance>8.0</ppmtolerance>
+        </parameter>
+        <parameter name="Minimum ion intensity">0.0</parameter>
+        <parameter name="13C deisotoping" selected="false">
+            <parameter name="m/z tolerance">
+                <absolutetolerance>0.001</absolutetolerance>
+                <ppmtolerance>10.0</ppmtolerance>
+            </parameter>
+            <parameter name="Monotonic shape">true</parameter>
+            <parameter name="Maximum charge">1</parameter>
+        </parameter>
+        <parameter name="Min matched isotope signals" selected="true">3</parameter>
+        <parameter name="Crop spectra to m/z overlap">false</parameter>
+        <parameter name="Spectral m/z tolerance">
+            <absolutetolerance>0.002</absolutetolerance>
+            <ppmtolerance>30.0</ppmtolerance>
+        </parameter>
+        <parameter name="Retention time tolerance" selected="false"/>
+        <parameter name="Minimum  matched signals">3</parameter>
+        <parameter name="Similarity" selected="Composite dot -product identity (similar to NIST search)">
+            <module name="Weighted dot-product cosine">
+                <parameter name="Weights">MassBank (mz^2 * I^0.5)</parameter>
+                <parameter name="Minimum  cos similarity">0.1</parameter>
+                <parameter name="Remove unmatched signals">true</parameter>
+            </module>
+            <module name="Composite dot -product identity (similar to NIST search)">
+                <parameter name="Weights">MassBank (mz^2 * I^0.5)</parameter>
+                <parameter name="Minimum  cos similarity">0.01</parameter>
+                <parameter name="Remove unmatched signals">true</parameter>
+            </module>
+        </parameter>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.peaklistmethods.identification.precursordbsearch.PrecursorDBSearchModule">
+        <parameter name="Feature lists" type="BATCH_LAST_PEAKLISTS"/>
+        <parameter name="Database file">
+            <current_file>D:\Daten2\coco\Carina\tattoo_pigments_spectral_libraries-master\20190730_timstof_pos_MS2.json</current_file>
+        </parameter>
+        <parameter name="Precursor m/z tolerance">
+            <absolutetolerance>0.005</absolutetolerance>
+            <ppmtolerance>30.0</ppmtolerance>
+        </parameter>
+        <parameter name="Retention time tolerance" selected="false"/>
+    </batchstep>
+</batch>
