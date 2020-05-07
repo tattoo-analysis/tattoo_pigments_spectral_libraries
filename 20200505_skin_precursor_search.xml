@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><batch>
+    <batchstep method="net.sf.mzmine.modules.rawdatamethods.peakpicking.massdetection.MassDetectionModule">
+        <parameter name="Raw data files" type="ALL_FILES"/>
+        <parameter name="Scans">
+            <ms_level>1</ms_level>
+            <scan_definition/>
+        </parameter>
+        <parameter name="Mass detector" selected="Centroid">
+            <module name="Centroid">
+                <parameter name="Noise level">100.0</parameter>
+            </module>
+            <module name="Exact mass">
+                <parameter name="Noise level">1000.0</parameter>
+            </module>
+            <module name="Local maxima">
+                <parameter name="Noise level"/>
+            </module>
+            <module name="Recursive threshold">
+                <parameter name="Noise level"/>
+                <parameter name="Min m/z peak width"/>
+                <parameter name="Max m/z peak width"/>
+            </module>
+            <module name="Wavelet transform">
+                <parameter name="Noise level"/>
+                <parameter name="Scale level"/>
+                <parameter name="Wavelet window size (%)"/>
+            </module>
+        </parameter>
+        <parameter name="Mass list name">masses</parameter>
+        <parameter name="Output netCDF filename (optional)" selected="false"/>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.masslistmethods.ADAPchromatogrambuilder.ADAPChromatogramBuilderModule">
+        <parameter name="Raw data files" type="ALL_FILES"/>
+        <parameter name="Scans">
+            <ms_level>1</ms_level>
+        </parameter>
+        <parameter name="Mass list">masses</parameter>
+        <parameter name="Min group size in # of scans">3</parameter>
+        <parameter name="Group intensity threshold">300.0</parameter>
+        <parameter name="Min highest intensity">500.0</parameter>
+        <parameter name="m/z tolerance">
+            <absolutetolerance>0.05</absolutetolerance>
+            <ppmtolerance>20.0</ppmtolerance>
+        </parameter>
+        <parameter name="Suffix">chromatograms</parameter>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.peaklistmethods.identification.precursordbsearch.PrecursorDBSearchModule">
+        <parameter name="Feature lists" type="BATCH_LAST_PEAKLISTS"/>
+        <parameter name="Spectral database file (MS/MS)">
+            <current_file>D:\git\tattoo_pigments_spectral_libraries\20190730_timstof_pos_MS2.json</current_file>
+            <last_file>D:\git\tattoo_pigments_spectral_libraries\20190730_timstof_pos_MS2.json</last_file>
+        </parameter>
+        <parameter name="Precursor m/z tolerance">
+            <absolutetolerance>0.005</absolutetolerance>
+            <ppmtolerance>30.0</ppmtolerance>
+        </parameter>
+        <parameter name="Retention time tolerance" selected="false"/>
+    </batchstep>
+</batch>
