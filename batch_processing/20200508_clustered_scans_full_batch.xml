@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><batch>
     <batchstep method="net.sf.mzmine.modules.rawdatamethods.rawclusteredimport.RawClusteredImportModule">
         <parameter name="Raw files (imzML)">
-            <file>D:\Daten\Corinna\skin\pr.imzML</file>
+            <file>J:\Home\AK_Karst\Messdaten\Aktive\c_brun17\Tims_Tof\Amsterdam\Results\23\23_4.imzML</file>
         </parameter>
         <parameter name="Threads" selected="true">16</parameter>
         <parameter name="m/z tolerance">
-            <absolutetolerance>0.02</absolutetolerance>
-            <ppmtolerance>30.0</ppmtolerance>
+            <absolutetolerance>0.005</absolutetolerance>
+            <ppmtolerance>10.0</ppmtolerance>
         </parameter>
         <parameter name="Exclusion list" selected="true">
             <parameter name="Exclusion m/z list">
@@ -19,10 +19,10 @@
             </parameter>
             <parameter name="Remove signals from scans">true</parameter>
         </parameter>
-        <parameter name="Noise cut-off">100.0</parameter>
-        <parameter name="Min height">250.0</parameter>
+        <parameter name="Noise cut-off">250.0</parameter>
+        <parameter name="Min height">300.0</parameter>
         <parameter name="Min similarity">0.9</parameter>
-        <parameter name="Minimum matched signals">5</parameter>
+        <parameter name="Minimum matched signals">4</parameter>
         <parameter name="Minimum spectra with DP">3</parameter>
         <parameter name="Minimum spectra with DP (%)" selected="false">0.05</parameter>
     </batchstep>
@@ -34,7 +34,7 @@
         </parameter>
         <parameter name="Mass detector" selected="Centroid">
             <module name="Centroid">
-                <parameter name="Noise level">150.0</parameter>
+                <parameter name="Noise level">250.0</parameter>
             </module>
             <module name="Exact mass">
                 <parameter name="Noise level">500.0</parameter>
@@ -62,7 +62,7 @@
             <ms_level>2</ms_level>
             <scan_definition/>
         </parameter>
-        <parameter name="Mass detector" selected="Exact mass">
+        <parameter name="Mass detector" selected="Centroid">
             <module name="Centroid">
                 <parameter name="Noise level">100.0</parameter>
             </module>
