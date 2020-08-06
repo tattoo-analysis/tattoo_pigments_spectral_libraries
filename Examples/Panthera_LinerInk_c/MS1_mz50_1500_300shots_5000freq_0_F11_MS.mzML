@@ -1,0 +1,105 @@
+<mzML xmlns="http://psi.hupo.org/ms/mzml" xsi:schemaLocation="http://psi.hupo.org/ms/mzml http://psidev.info/files/ms/mzML/xsd/mzML1.1.0.xsd" version="1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<cvList count="2">
+<cv id="MS" fullName="Proteomics Standards Initiative Mass Spectrometry Vocabularies" version="" URI="https://raw.githubusercontent.com/HUPO-PSI/psi-ms-CV/master/psi-ms.obo"/>
+<cv id="UO" fullName="unit" version="1.20" URI="https://raw.githubusercontent.com/bio-ontology-research-group/unit-ontology/master/unit.obo"/>
+</cvList>
+<fileDescription>
+<fileContent>
+<cvParam cvRef="MS" accession="MS:1000579" name="MS1 spectrum"/>
+<cvParam cvRef="MS" accession="MS:1000127" name="centroid spectrum"/>
+</fileContent>
+<sourceFileList count="1">
+<sourceFile id="sourceFile" location="J:/Home/AK_Karst/Messdaten/Aktive/c_brun17/Tims_Tof/Inks/Panthera_Liner_Ink/MS1_mz50_1500_300shots_5000freq_0_F11_MS.d" name="MS1_mz50_1500_300shots_5000freq_0_F11_MS.d">
+<cvParam cvRef="MS" accession="MS:1000569" name="SHA-1" value="1037ca5322abe2d35f0749b093160538fe945ccf"/>
+</sourceFile>
+</sourceFileList>
+<contact>
+<cvParam cvRef="MS" accession="MS:1000586" name="contact name" value="akkmess004"/>
+</contact>
+</fileDescription>
+<sampleList count="1">
+<sample id="sample" name="MS1_mz50_1500_300shots_5000freq">
+<userParam name="SampleDescription" value="MS"/>
+</sample>
+</sampleList>
+<softwareList count="3">
+<software id="exportSoftware" version="5.3.113">
+<cvParam cvRef="MS" accession="MS:1000719" name="DataAnalysis"/>
+</software>
+<software id="instrumentSoftware" version="1.0.64.0">
+<cvParam cvRef="MS" accession="MS:1000692" name="Bruker software"/>
+<userParam name="AcquisitionProgram" value="timsTOF"/>
+</software>
+<software id="recalibrationSoftware" version="5.3.113">
+<cvParam cvRef="MS" accession="MS:1000719" name="DataAnalysis"/>
+</software>
+</softwareList>
+<instrumentConfigurationList count="1">
+<instrumentConfiguration id="instrument">
+<cvParam cvRef="MS" accession="MS:1000703" name="micrOTOF-Q"/>
+<componentList count="3">
+<source order="1">
+<cvParam cvRef="MS" accession="MS:1000008" name="ionization type"/>
+</source>
+<analyzer order="2">
+<cvParam cvRef="MS" accession="MS:1000443" name="mass analyzer type"/>
+</analyzer>
+<detector order="3">
+<cvParam cvRef="MS" accession="MS:1000253" name="electron multiplier"/>
+</detector>
+</componentList>
+<softwareRef ref="instrumentSoftware"/>
+</instrumentConfiguration>
+</instrumentConfigurationList>
+<dataProcessingList count="1">
+<dataProcessing id="exportation">
+<processingMethod order="1" softwareRef="instrumentSoftware">
+<cvParam cvRef="MS" accession="MS:1000035" name="peak picking"/>
+</processingMethod>
+<processingMethod order="2" softwareRef="recalibrationSoftware">
+<cvParam cvRef="MS" accession="MS:1001485" name="m/z calibration"/>
+<cvParam cvRef="MS" accession="MS:1000747" name="completion time" value="2020-07-27T12:40:44"/>
+<userParam name="RecalibrationGuid" value=""/>
+</processingMethod>
+<processingMethod order="3" softwareRef="exportSoftware">
+<cvParam cvRef="MS" accession="MS:1000544" name="Conversion to mzML"/>
+<cvParam cvRef="MS" accession="MS:1000747" name="completion time" value="2020-08-03T11:22:33"/>
+</processingMethod>
+</dataProcessing>
+</dataProcessingList>
+<run id="run" defaultInstrumentConfigurationRef="instrument" startTimeStamp="2020-07-27T17:34:27+02:00">
+<spectrumList count="1" defaultDataProcessingRef="exportation">
+<spectrum index="0" id="file=sourceFile" defaultArrayLength="1401">
+<cvParam cvRef="MS" accession="MS:1000130" name="positive scan"/>
+<cvParam cvRef="MS" accession="MS:1000579" name="MS1 spectrum"/>
+<cvParam cvRef="MS" accession="MS:1000127" name="centroid spectrum"/>
+<cvParam cvRef="MS" accession="MS:1000285" name="total ion current" value="2049941.00000000"/>
+<cvParam cvRef="MS" accession="MS:1000504" name="base peak m/z" value="114.90388230" unitCvRef="MS" unitAccession="MS:1000040" unitName="m/z"/>
+<cvParam cvRef="MS" accession="MS:1000505" name="base peak intensity" value="250125.00000000" unitCvRef="MS" unitAccession="MS:1000131" unitName="number of detector counts"/>
+<cvParam cvRef="MS" accession="MS:1000511" name="ms level" value="1"/>
+<cvParam cvRef="MS" accession="MS:1000527" name="highest observed m/z" value="1421.12355318" unitCvRef="MS" unitAccession="MS:1000040" unitName="m/z"/>
+<cvParam cvRef="MS" accession="MS:1000528" name="lowest observed m/z" value="51.57336282" unitCvRef="MS" unitAccession="MS:1000040" unitName="m/z"/>
+<scanList count="1">
+<cvParam cvRef="MS" accession="MS:1000795" name="no combination"/>
+<scan instrumentConfigurationRef="instrument">
+<cvParam cvRef="MS" accession="MS:1000016" name="scan start time" value="0" unitCvRef="UO" unitAccession="UO:0000031" unitName="minute"/>
+</scan>
+</scanList>
+<binaryDataArrayList count="2">
+<binaryDataArray encodedLength="6624">
+<cvParam cvRef="MS" accession="MS:1000574" name="zlib compression"/>
+<cvParam cvRef="MS" accession="MS:1000514" name="m/z array" value="" unitCvRef="MS" unitAccession="MS:1000040" unitName="m/z"/>
+<cvParam cvRef="MS" accession="MS:1000521" name="32-bit float"/>
+<binary>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</binary>
+</binaryDataArray>
+<binaryDataArray encodedLength="3492">
+<cvParam cvRef="MS" accession="MS:1000574" name="zlib compression"/>
+<cvParam cvRef="MS" accession="MS:1000515" name="intensity array" value="" unitCvRef="MS" unitAccession="MS:1000131" unitName="number of detector counts"/>
+<cvParam cvRef="MS" accession="MS:1000521" name="32-bit float"/>
+<binary>eNpNWG1wnFUVvoG2RoRaKLS0grTWUqQKtS20UNHXvXc3GVJrtS0OjDjlw4/RjK4a7NZGuIQlE9YQ1hJDqG2IIYYYYqeTYWpM085ODbHEWGObgVo6ZUkxOpkOVIapnUxHfc49z2bz48y7733vxznPec7HXWOqYsbshFRD6iHynoQ0cayOY/KtkvI/q+/NnLsXsku/tb7qjLncGv8M5mQx5iGTEIv3TjwnIIcgrZCjMdO8JmHyN8WNuQ7f37J6VnfMRB9yYf/Lkwkdq+bZWT6PxSJbVW7MTdbkmpzJP+9Mch72edCaaD3e+53JfRF7/NCZqBu/b3DGH3emdTHmHMQ5A9jjMOauxpwGa/KPO/PqyjJjamPmyAuY8xTmbLNqaw3mfkBbt+D9HqxZoPb5yIU1Jon32Vb19NS3MYi/OIl9r8S3u4HLCTy/YxXzNkgZcTF4/itmerfD3h68Q6+oDnuXWO7PPQW3lzF2G2Se2hHNcgHLcK5IC2QuvvVDhvD7AteJL2tifsGeMp23L6bfRT5tFVecU78aOtwIrDLqSzMT8lNb5Md/IRnqIzwBfuYwz95Pu/5q9dvtsPmX1tz/SJnasBuyVs/qX4pzcrFgf1TrxKfGxPGtHc8U8Su3qvvrfD9HLJLkZK/Tc0WvlFXsBNth3Zc+MK1LytW+vPAVOp2CfBdrT+B9A35fit+3YH2dVV+NYfyMVcyw/uxoQscKODboc86lcbVpEOs/bHW/k1bPlXlHIB0x5VsP7RB/nqQtPZwn8XOVNZe5crUN3DSXgZ/XO7Oo1YWYMO+C60vBY+yfuwTPt6jr3fh+MWbOzC1Tnwqmr8RM9jPQ7Wl832x1rI04CT8+QVyX4Nmrfsk9hj3TeD8OOctYm0X+ZWO+4s9liqFwEnFn/k4fix/6YlMcOPlUoshHxHtrG+LvVqeYCRbt3LuZ+MAWswl7zbDKuVvIJ5nzUfx+PxZwfXtbmcah7Ausq+KJoo719MmjTrlzA8a+T05XkaedxBpx5o9Zjb00fdNFfYY1JvM1Tv2QivlMF849pb7z/6bdnyMu7arP5p8njL8WMTPuivG/XH0YsG+MaR45zHjr4Jh8/x7kH5DIypk+3UM7JW6Bsz9t1U/Mp32NCbV1FPJNqz4f0TycvSKuOoivT5NnM5nv+hQH32Q1rndShw7Gmwg4PnIH88M58lXWzdDclro5EWyOtuOM55zm8/c5T3wAW3J/cZo3gaffzZwOO1MH4pofQh51auN5zHmdcZZ1OreGuamLe5aoPYvGpnxi1o8l1GbReYc1+47HFfNxyM1W+fwFxzyIsTet5pdJ1quT9Dds9xcD7sZ32hA3QYcMeYa5+d8iLiQvyPsl1mx8CWedoM5p5jTUg5VvJBTTd7ieeSo5HFdbCnljQPnsEctBl7pp4unXXfru39S6YAbp4zZiIz68wmn+qOR30ePr9OvVVnMddHnwUEL1mUG+w+58f9xEnU6xOax5KLJOc3sX/Sl7FOK1h3n7U4jR3TxX8Pssxr5WrB1BP2CeQ90NPO/kmNM6J7Wg9deo1VsSeq7oJTpst+ZcBX3I3BB4KjF2kM8q2lrLuOnn3l18b+S3veRNk+6fLE1M1c/87HjYxz9vQ8+R2wrfPoHfP4L8kfmsV/Nn0L2S8SH2vmbNon865dCzxPJL1oymEoqFtyZp4uo7ybH32fD0LyGG73S6t+wjvQX84uut8hO6lo/ouvx5zkMe9k8ydkqtckL48YJy1Uyw19hPXCTfftUq/xvx/JjVmlGo2eOsrbdxXUp1GflxXH8jv+WWAIuj3B92eenBKvC+EPKwNeXt8bCff8CFui5+yv3JKU8H8f571t95zGWS9+Zb9XEba+cBG+pcbjNzlHAkYzVfw3f+Wfp6vfK+tc+pD7qIBeb7M8yHq8n1TnJIeLAG/NqjGK5YF9dcIoJ+NLfBBRz872yRZ5PE9xHZa1qeHWRsT/LZw3NmEY/RQs/BeEyytxhm7NaQi+PkEPQyFyAbrWLSS45ITCeg29vQ7RqML8bvHuIrZz4EP8xx5uKmhOKF3BbtiYd5olf0nuQmpzx7mn33t6zG7xbukWW9F4yPqj6+hfGSYw+apM5p1dsPse+VnPGiDfXWv0x8MJ570amtUgvicZO72oXcEGqF1I13WdvRW4Wcl6aPkuTlXt4DmsnRFXGNM9QSn8ec52yoDeGMU1w/xyq2XcQdPg59xV76Bv23f0N5Et3B/HOavpHv4L5HjBrh7zzmeom1dcD8Soz9wup5+3ie13wd6shaxSiHmPCPay8fsJxkvqhXv0cfYc9cVbw35dMu+D/oJnpn6X85o8qakYPAL+lUx6pizxr6/+2sMyVc83mr9gt2S61iLfF1rVVJ01bJh/cxlmpYkwTTT1rldiM5PUYeZsnVDvqkjtjs4n4d5PE79J3Uy4NO+0T41GfJtSrelYb0jLzEb7ubykOh1r5nta8TLATLu8iprzjVX3Qs5XfUlpxzaoP0umLzt3HeMrnz0F+FutBC7jWxVkmNXYieTPqRUe2nAl9wr/MN5Pw9jMe89oVT+DM+Q79XTR5hj7z0p+3M7eMa86Ve86L4wW8DP0qd8j6l/U3Y8zzxLdyjzhJTyZ2/Yp3dxbpTSl/uZh8pNfkE+dbAXF/COZO0t4UxLXE+wtwjPvwBuZpiDk5Bt1ut5qOmaf2L+MCQt5N6B5c1uQVO8ZDcgpoZbWWPJr3tAM+vYYwJDz/OPukuPtvIH/jB/8RpvpbaMKF3g9y98aBrtBLfFpFDss8TvAeutGqr6Ca/Y9prRKLXCqv5uFL75DBnA89FrfFyj1nFdcvYs6xhTNSyLjXRXsH/Xqs9z8OKTSQ5bZXu64fY1893OvcqYjXGmEjSdxnyUGKommdPMD8UfDxE3PfrPUbG/AHeeSp5L6tljE9wTTux/A++38n/EeT/B+kRvqx9Rsjjohf6Cl/DvrGTujUUapByKrfGhftR1AC/DBDHI+RaPXPgJuoiXFjIelCoGYX7wQ7eeSWe1zLXy/hi3pFeoa0PUUfpwfOcex1jq5P5Zx15mineq6Q/8oL5MvE9no8V+h/GRuGusFHvG4ELnjZ0U9ceyiGuKdTEQdaW+axrKX6XmlfB/dq5d4Z3CKmNnncuz/vU31iX5tpiD/Ao/3vBPcP/RmPZ/4EcHaR/t3BdCW2qY++fZf6532lsfsOG+33o6Rqm3Z1v571uB2uD8GczfbacY4X7RuGePNMW/8N4QGM68Bg6+W70t80480b1i+9iznHUs5p6NxDz5ewzq5nf6liXr2cck/v+Z+DYaxyr59wGxl4547uP/NpqtXdo4d2imfkzHStiLvlC4vkZ8vkI/XiBtUnWrGIfN5vnDjMOLkyrF6LvNTwXd9DQe1bwv58CDwvz9rP+HKPuMucDq/+bNROXo9NyQZoxc5rxO8D8UODYYcZShlwe5vg+9moD1DUTK959Ovl+lvvIOYV7fDfn7Zx2b6kM8/4P20/HnA==</binary>
+</binaryDataArray>
+</binaryDataArrayList>
+</spectrum>
+</spectrumList>
+</run>
+</mzML>
