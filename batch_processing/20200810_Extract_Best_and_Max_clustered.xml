@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?><batch>
+    <batchstep method="net.sf.mzmine.modules.rawdatamethods.rawclusteredimport.RawClusteredImportModule">
+        <parameter name="Raw files (imzML)">
+            <file>C:\Daten\20_2regions.imzML</file>
+        </parameter>
+        <parameter name="Threads" selected="true">20</parameter>
+        <parameter name="m/z tolerance">
+            <absolutetolerance>0.005</absolutetolerance>
+            <ppmtolerance>10.0</ppmtolerance>
+        </parameter>
+        <parameter name="Exclusion list" selected="true">
+            <parameter name="Exclusion m/z list">
+                <current_file>D:\git\tattoo_pigments_spectral_libraries\exclusion_lists\timsTOFfleX_LDI_exclusion_list.csv</current_file>
+                <last_file>D:\git\tattoo_pigments_spectral_libraries\exclusion_lists\timsTOFfleX_LDI_exclusion_list.csv</last_file>
+            </parameter>
+            <parameter name="m/z tolerance">
+                <absolutetolerance>0.005</absolutetolerance>
+                <ppmtolerance>10.0</ppmtolerance>
+            </parameter>
+            <parameter name="Remove signals from scans">true</parameter>
+        </parameter>
+        <parameter name="Noise cut-off">250.0</parameter>
+        <parameter name="Min height">1000.0</parameter>
+        <parameter name="Min similarity">0.9</parameter>
+        <parameter name="Minimum matched signals">3</parameter>
+        <parameter name="Minimum spectra with DP">3</parameter>
+        <parameter name="Minimum spectra with DP (%)" selected="false">0.05</parameter>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.rawdatamethods.peakpicking.massdetection.MassDetectionModule">
+        <parameter name="Raw data files" type="BATCH_LAST_FILES"/>
+        <parameter name="Scans">
+            <ms_level>1</ms_level>
+            <scan_definition/>
+        </parameter>
+        <parameter name="Mass detector" selected="Centroid">
+            <module name="Centroid">
+                <parameter name="Noise level">180.0</parameter>
+            </module>
+            <module name="Exact mass">
+                <parameter name="Noise level">500.0</parameter>
+            </module>
+            <module name="Local maxima">
+                <parameter name="Noise level"/>
+            </module>
+            <module name="Recursive threshold">
+                <parameter name="Noise level"/>
+                <parameter name="Min m/z peak width"/>
+                <parameter name="Max m/z peak width"/>
+            </module>
+            <module name="Wavelet transform">
+                <parameter name="Noise level"/>
+                <parameter name="Scale level"/>
+                <parameter name="Wavelet window size (%)"/>
+            </module>
+        </parameter>
+        <parameter name="Mass list name">masses</parameter>
+        <parameter name="Output netCDF filename (optional)" selected="false"/>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.rawdatamethods.peakpicking.massdetection.MassDetectionModule">
+        <parameter name="Raw data files" type="BATCH_LAST_FILES"/>
+        <parameter name="Scans">
+            <ms_level>2</ms_level>
+            <scan_definition/>
+        </parameter>
+        <parameter name="Mass detector" selected="Centroid">
+            <module name="Centroid">
+                <parameter name="Noise level">100.0</parameter>
+            </module>
+            <module name="Exact mass">
+                <parameter name="Noise level">30.0</parameter>
+            </module>
+            <module name="Local maxima">
+                <parameter name="Noise level"/>
+            </module>
+            <module name="Recursive threshold">
+                <parameter name="Noise level"/>
+                <parameter name="Min m/z peak width"/>
+                <parameter name="Max m/z peak width"/>
+            </module>
+            <module name="Wavelet transform">
+                <parameter name="Noise level"/>
+                <parameter name="Scale level"/>
+                <parameter name="Wavelet window size (%)"/>
+            </module>
+        </parameter>
+        <parameter name="Mass list name">masses</parameter>
+        <parameter name="Output netCDF filename (optional)" selected="false"/>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.masslistmethods.shoulderpeaksfilter.ShoulderPeaksFilterModule">
+        <parameter name="Raw data files" type="BATCH_LAST_FILES"/>
+        <parameter name="Mass list">masses</parameter>
+        <parameter name="Mass resolution">15000.0</parameter>
+        <parameter name="Peak model function">Lorentzian</parameter>
+        <parameter name="Suffix">filtered</parameter>
+        <parameter name="Remove original mass list">false</parameter>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.masslistmethods.exportaslibrary.ExportScansAsLibraryModule">
+        <parameter name="Raw data files" type="BATCH_LAST_FILES"/>
+        <parameter name="Scans">
+            <ms_level>1</ms_level>
+        </parameter>
+        <parameter name="Mass list">masses filtered</parameter>
+        <parameter name="Minimum signals">2</parameter>
+        <parameter name="Export file">
+            <current_file>D:\git\tattoo_pigments_spectral_libraries\auto_batch_mode\auto_batch_skin_exract_all_clustered_spec</current_file>
+        </parameter>
+        <parameter name="Add file name to description">true</parameter>
+        <parameter name="Description">sample</parameter>
+        <parameter name="Best single spectrum">true</parameter>
+        <parameter name="Mean spectrum">false</parameter>
+        <parameter name="Maximum spectrum">true</parameter>
+        <parameter name="Sum spectrum">false</parameter>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.masslistmethods.mergedscanfeaturelist.MergedScanMSMSFeatureListBuilderModule">
+        <parameter name="Raw data files" type="BATCH_LAST_FILES"/>
+        <parameter name="Mass list">masses filtered</parameter>
+        <parameter name="m/z tolerance">
+            <absolutetolerance>0.02</absolutetolerance>
+            <ppmtolerance>20.0</ppmtolerance>
+        </parameter>
+        <parameter name="Include single spectra">true</parameter>
+        <parameter name="Suffix">merged MS1 matched + MSMS</parameter>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.peaklistmethods.identification.spectraldbsearch.LocalSpectralDBSearchModule">
+        <parameter name="Feature lists" type="BATCH_LAST_PEAKLISTS"/>
+        <parameter name="MassList">masses filtered</parameter>
+        <parameter name="Spectral database file">
+            <current_file>D:\git\tattoo_pigments_spectral_libraries\20190730_timstof_pos_MS1.json</current_file>
+            <last_file>D:\git\tattoo_pigments_spectral_libraries\20190730_timstof_pos_MS1.json</last_file>
+            <last_file>D:\git\tattoo_pigments_spectral_libraries\20190730_timstof_pos_MS2.json</last_file>
+        </parameter>
+        <parameter name="MS level">1</parameter>
+        <parameter name="Check all scans (only for MS2)">false</parameter>
+        <parameter name="Precursor m/z tolerance">
+            <absolutetolerance>0.01</absolutetolerance>
+            <ppmtolerance>5.0</ppmtolerance>
+        </parameter>
+        <parameter name="Remove precursor">false</parameter>
+        <parameter name="Minimum ion intensity">0.0</parameter>
+        <parameter name="13C deisotoping" selected="false">
+            <parameter name="m/z tolerance">
+                <absolutetolerance>0.001</absolutetolerance>
+                <ppmtolerance>10.0</ppmtolerance>
+            </parameter>
+            <parameter name="Monotonic shape">true</parameter>
+            <parameter name="Maximum charge">1</parameter>
+        </parameter>
+        <parameter name="Min matched isotope signals" selected="true">3</parameter>
+        <parameter name="Crop spectra to m/z overlap">false</parameter>
+        <parameter name="Spectral m/z tolerance">
+            <absolutetolerance>0.005</absolutetolerance>
+            <ppmtolerance>30.0</ppmtolerance>
+        </parameter>
+        <parameter name="Retention time tolerance" selected="false"/>
+        <parameter name="Minimum  matched signals">3</parameter>
+        <parameter name="Similarity" selected="Composite dot -product identity (similar to NIST search)">
+            <module name="Weighted dot-product cosine">
+                <parameter name="Weights">NONE (mz^0 * I^1)</parameter>
+                <parameter name="Minimum  cos similarity">0.3</parameter>
+                <parameter name="Handle unmatched signals">KEEP LIBRARY SIGNALS</parameter>
+            </module>
+            <module name="Composite dot -product identity (similar to NIST search)">
+                <parameter name="Weights">NONE (mz^0 * I^1)</parameter>
+                <parameter name="Minimum  cos similarity">0.2</parameter>
+                <parameter name="Handle unmatched signals">KEEP LIBRARY SIGNALS</parameter>
+            </module>
+        </parameter>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.peaklistmethods.identification.spectraldbsearch.LocalSpectralDBSearchModule">
+        <parameter name="Feature lists" type="BATCH_LAST_PEAKLISTS"/>
+        <parameter name="MassList">masses filtered</parameter>
+        <parameter name="Spectral database file">
+            <current_file>D:\git\tattoo_pigments_spectral_libraries\20190730_timstof_pos_MS2.json</current_file>
+            <last_file>D:\git\tattoo_pigments_spectral_libraries\20190730_timstof_pos_MS2.json</last_file>
+            <last_file>D:\git\tattoo_pigments_spectral_libraries\20190730_timstof_pos_MS1.json</last_file>
+        </parameter>
+        <parameter name="MS level">2</parameter>
+        <parameter name="Check all scans (only for MS2)">true</parameter>
+        <parameter name="Precursor m/z tolerance">
+            <absolutetolerance>0.01</absolutetolerance>
+            <ppmtolerance>20.0</ppmtolerance>
+        </parameter>
+        <parameter name="Remove precursor">false</parameter>
+        <parameter name="Minimum ion intensity">0.0</parameter>
+        <parameter name="13C deisotoping" selected="false">
+            <parameter name="m/z tolerance">
+                <absolutetolerance>0.0015</absolutetolerance>
+                <ppmtolerance>10.0</ppmtolerance>
+            </parameter>
+            <parameter name="Monotonic shape">true</parameter>
+            <parameter name="Maximum charge">1</parameter>
+        </parameter>
+        <parameter name="Min matched isotope signals" selected="false">3</parameter>
+        <parameter name="Crop spectra to m/z overlap">true</parameter>
+        <parameter name="Spectral m/z tolerance">
+            <absolutetolerance>0.005</absolutetolerance>
+            <ppmtolerance>30.0</ppmtolerance>
+        </parameter>
+        <parameter name="Retention time tolerance" selected="false"/>
+        <parameter name="Minimum  matched signals">3</parameter>
+        <parameter name="Similarity" selected="Weighted dot-product cosine">
+            <module name="Weighted dot-product cosine">
+                <parameter name="Weights">NONE (mz^0 * I^1)</parameter>
+                <parameter name="Minimum  cos similarity">0.5</parameter>
+                <parameter name="Handle unmatched signals">KEEP ALL AND MATCH TO ZERO</parameter>
+            </module>
+            <module name="Composite dot -product identity (similar to NIST search)">
+                <parameter name="Weights">NONE (mz^0 * I^1)</parameter>
+                <parameter name="Minimum  cos similarity">0.2</parameter>
+                <parameter name="Handle unmatched signals">KEEP LIBRARY SIGNALS</parameter>
+            </module>
+        </parameter>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.peaklistmethods.identification.carbonblack.CarbonBlackModule">
+        <parameter name="Feature lists" type="BATCH_LAST_PEAKLISTS"/>
+        <parameter name="Mass list">masses filtered</parameter>
+        <parameter name="m/z tolerance">
+            <absolutetolerance>0.002</absolutetolerance>
+            <ppmtolerance>20.0</ppmtolerance>
+        </parameter>
+        <parameter name="Minimum consecutive C signals">4</parameter>
+        <parameter name="Polarity">POSITIVE</parameter>
+        <parameter name="Minimum height (noise level)">1000.0</parameter>
+        <parameter name="Minimum cos similarity">0.5</parameter>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.peaklistmethods.io.librarymatchresultsexport.LibraryMatchResultsExportModule">
+        <parameter name="Feature lists" type="BATCH_LAST_PEAKLISTS"/>
+        <parameter name="Export file">
+            <current_file>D:\git\tattoo_pigments_spectral_libraries\auto_batch_mode\auto_batch_skin</current_file>
+            <last_file>D:\git\tattoo_pigments_spectral_libraries\auto_batch_mode\auto_batch_skin</last_file>
+        </parameter>
+        <parameter name="Mass list">masses filtered</parameter>
+        <parameter name="Collapse duplicates" selected="true">
+            <parameter name="Fields to compare">
+                <item>Name</item>
+            </parameter>
+            <parameter name="Compare # data points">false</parameter>
+        </parameter>
+        <parameter name="Sort matches by">COMBINED</parameter>
+        <parameter name="Weight for combined score">2.0</parameter>
+        <parameter name="m/z tolerance">
+            <absolutetolerance>0.003</absolutetolerance>
+            <ppmtolerance>25.0</ppmtolerance>
+        </parameter>
+        <parameter name="Polarity">POSITIVE</parameter>
+        <parameter name="Export graphics to" selected="true">
+            <current_file>D:\git\tattoo_pigments_spectral_libraries\auto_batch_mode\auto_batch_skin_{}</current_file>
+            <last_file>D:\git\tattoo_pigments_spectral_libraries\auto_batch_mode\auto_batch_skin_{}</last_file>
+        </parameter>
+        <parameter name="Create dataset graphics folders">true</parameter>
+        <parameter name="Graphics width">1000.0</parameter>
+        <parameter name="Graphics export">
+            <item>PDF</item>
+            <item>SVG</item>
+        </parameter>
+    </batchstep>
+</batch>
