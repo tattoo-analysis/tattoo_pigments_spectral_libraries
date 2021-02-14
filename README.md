@@ -9,10 +9,8 @@ timsTOF fleX
 ### Pigments
 PR 122
 
-
 ## Contact
 Corinna Brungs (corinna.brungs@uni-muenster.de)
 Robin Schmid (robinschmid@uni-muenster.de)
 
-
-All files in this repository are under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license
+Data and methods in the [github.com/tattoo-analysis](https://github.com/tattoo-analysis) repository by Corinna Brungs and Robin Schmid et al. are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
