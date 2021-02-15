@@ -47,7 +47,9 @@
         </parameter>
         <parameter name="Mass list">masses</parameter>
         <parameter name="Exclusion list" selected="false">
-            <parameter name="Exclusion m/z list"/>
+            <parameter name="Exclusion m/z list">
+                <current_file>D:\git\tattoo_pigments_spectral_libraries\exclusion_lists\timsTOFfleX_LDI_exclusion_list.csv</current_file>
+            </parameter>
             <parameter name="m/z tolerance">
                 <absolutetolerance>0.02</absolutetolerance>
                 <ppmtolerance>30.0</ppmtolerance>
@@ -140,6 +142,7 @@
             <absolutetolerance>0.02</absolutetolerance>
             <ppmtolerance>20.0</ppmtolerance>
         </parameter>
+        <parameter name="Include single spectra">true</parameter>
         <parameter name="Suffix">merged MS1 matched + MSMS</parameter>
     </batchstep>
     <batchstep method="net.sf.mzmine.modules.peaklistmethods.identification.spectraldbsearch.LocalSpectralDBSearchModule">
@@ -239,14 +242,15 @@
             <absolutetolerance>0.02</absolutetolerance>
             <ppmtolerance>20.0</ppmtolerance>
         </parameter>
+        <parameter name="Include single spectra">true</parameter>
         <parameter name="Suffix">Match to Inks+Skin</parameter>
     </batchstep>
     <batchstep method="net.sf.mzmine.modules.peaklistmethods.identification.spectraldbsearch.LocalSpectralDBSearchModule">
         <parameter name="Feature lists" type="BATCH_LAST_PEAKLISTS"/>
         <parameter name="MassList">masses filtered</parameter>
         <parameter name="Spectral database file">
-            <current_file>D:\git\tattoo_pigments_spectral_libraries\20200310_timstof_pos_skin_MS1.json</current_file>
-            <last_file>D:\git\tattoo_pigments_spectral_libraries\20200310_timstof_pos_skin_MS1.json</last_file>
+            <current_file>D:\git\tattoo_pigments_spectral_libraries\20200310_timstof_pos_skinandink_MS1.json</current_file>
+            <last_file>D:\git\tattoo_pigments_spectral_libraries\20200310_timstof_pos_skinandink_MS1.json</last_file>
         </parameter>
         <parameter name="MS level">1</parameter>
         <parameter name="Check all scans (only for MS2)">false</parameter>
