@@ -16,7 +16,7 @@ Library was generated with MZmine 2. The spectral libraries can be searched with
 timsTOF fleX
 
 ### Pigments
-PR 122
+
 
 ## Contact
 Corinna Brungs (corinna.brungs@uni-muenster.de)
