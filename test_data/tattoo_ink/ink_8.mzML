@@ -1,0 +1,117 @@
+<mzML xmlns="http://psi.hupo.org/ms/mzml" xsi:schemaLocation="http://psi.hupo.org/ms/mzml http://psidev.info/files/ms/mzML/xsd/mzML1.1.0.xsd" version="1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<cvList count="2">
+<cv id="MS" fullName="Proteomics Standards Initiative Mass Spectrometry Vocabularies" version="" URI="https://raw.githubusercontent.com/HUPO-PSI/psi-ms-CV/master/psi-ms.obo"/>
+<cv id="UO" fullName="unit" version="1.20" URI="https://raw.githubusercontent.com/bio-ontology-research-group/unit-ontology/master/unit.obo"/>
+</cvList>
+<fileDescription>
+<fileContent>
+<cvParam cvRef="MS" accession="MS:1000580" name="MSn spectrum"/>
+<cvParam cvRef="MS" accession="MS:1000127" name="centroid spectrum"/>
+</fileContent>
+<sourceFileList count="1">
+<sourceFile id="sourceFile" location="J:/Home/AK_Karst/Messdaten/Aktive/c_brun17/Tims_Tof/Inks/Undead_Red_Minden/20200122pos/MS2_method_best_300shots_energy20_341_coll70_0_E10_MSMS341.1301.d" name="MS2_method_best_300shots_energy20_341_coll70_0_E10_MSMS341.1301.d">
+<cvParam cvRef="MS" accession="MS:1000569" name="SHA-1" value="58ae52d0ce2215c4b4e738140451bb4029dec17c"/>
+</sourceFile>
+</sourceFileList>
+<contact>
+<cvParam cvRef="MS" accession="MS:1000586" name="contact name" value="Akkmess004-Admin"/>
+</contact>
+</fileDescription>
+<sampleList count="1">
+<sample id="sample" name="MS2_method_best_300shots_energy20_341_coll70">
+<userParam name="SampleDescription" value="MS"/>
+</sample>
+</sampleList>
+<softwareList count="3">
+<software id="exportSoftware" version="5.3.113">
+<cvParam cvRef="MS" accession="MS:1000719" name="DataAnalysis"/>
+</software>
+<software id="instrumentSoftware" version="1.0.59.0">
+<cvParam cvRef="MS" accession="MS:1000692" name="Bruker software"/>
+<userParam name="AcquisitionProgram" value="timsTOF"/>
+</software>
+<software id="recalibrationSoftware" version="5.3.113">
+<cvParam cvRef="MS" accession="MS:1000719" name="DataAnalysis"/>
+</software>
+</softwareList>
+<instrumentConfigurationList count="1">
+<instrumentConfiguration id="instrument">
+<cvParam cvRef="MS" accession="MS:1000703" name="micrOTOF-Q"/>
+<componentList count="3">
+<source order="1">
+<cvParam cvRef="MS" accession="MS:1000008" name="ionization type"/>
+</source>
+<analyzer order="2">
+<cvParam cvRef="MS" accession="MS:1000443" name="mass analyzer type"/>
+</analyzer>
+<detector order="3">
+<cvParam cvRef="MS" accession="MS:1000253" name="electron multiplier"/>
+</detector>
+</componentList>
+<softwareRef ref="instrumentSoftware"/>
+</instrumentConfiguration>
+</instrumentConfigurationList>
+<dataProcessingList count="1">
+<dataProcessing id="exportation">
+<processingMethod order="1" softwareRef="instrumentSoftware">
+<cvParam cvRef="MS" accession="MS:1000035" name="peak picking"/>
+</processingMethod>
+<processingMethod order="2" softwareRef="recalibrationSoftware">
+<cvParam cvRef="MS" accession="MS:1001485" name="m/z calibration"/>
+<cvParam cvRef="MS" accession="MS:1000747" name="completion time" value="2020-01-22T13:44:34"/>
+<userParam name="RecalibrationGuid" value=""/>
+</processingMethod>
+<processingMethod order="3" softwareRef="exportSoftware">
+<cvParam cvRef="MS" accession="MS:1000544" name="Conversion to mzML"/>
+<cvParam cvRef="MS" accession="MS:1000747" name="completion time" value="2020-08-03T11:29:48"/>
+</processingMethod>
+</dataProcessing>
+</dataProcessingList>
+<run id="run" defaultInstrumentConfigurationRef="instrument" startTimeStamp="2020-01-22T18:27:44+01:00">
+<spectrumList count="1" defaultDataProcessingRef="exportation">
+<spectrum index="0" id="file=sourceFile" defaultArrayLength="145">
+<cvParam cvRef="MS" accession="MS:1000130" name="positive scan"/>
+<cvParam cvRef="MS" accession="MS:1000580" name="MSn spectrum"/>
+<cvParam cvRef="MS" accession="MS:1000127" name="centroid spectrum"/>
+<cvParam cvRef="MS" accession="MS:1000285" name="total ion current" value="656601.00000000"/>
+<cvParam cvRef="MS" accession="MS:1000504" name="base peak m/z" value="268.10037537" unitCvRef="MS" unitAccession="MS:1000040" unitName="m/z"/>
+<cvParam cvRef="MS" accession="MS:1000505" name="base peak intensity" value="90203.00000000" unitCvRef="MS" unitAccession="MS:1000131" unitName="number of detector counts"/>
+<cvParam cvRef="MS" accession="MS:1000511" name="ms level" value="2"/>
+<cvParam cvRef="MS" accession="MS:1000527" name="highest observed m/z" value="340.11800104" unitCvRef="MS" unitAccession="MS:1000040" unitName="m/z"/>
+<cvParam cvRef="MS" accession="MS:1000528" name="lowest observed m/z" value="89.03870407" unitCvRef="MS" unitAccession="MS:1000040" unitName="m/z"/>
+<scanList count="1">
+<cvParam cvRef="MS" accession="MS:1000795" name="no combination"/>
+<scan instrumentConfigurationRef="instrument">
+<cvParam cvRef="MS" accession="MS:1000016" name="scan start time" value="0" unitCvRef="UO" unitAccession="UO:0000031" unitName="minute"/>
+</scan>
+</scanList>
+<precursorList count="1">
+<precursor>
+<selectedIonList count="1">
+<selectedIon>
+<cvParam cvRef="MS" accession="MS:1000744" name="selected ion m/z" value="341.13010000" unitCvRef="MS" unitAccession="MS:1000040" unitName="m/z"/>
+</selectedIon>
+</selectedIonList>
+<activation>
+<cvParam cvRef="MS" accession="MS:1000045" name="collision energy" value="70.000000" unitCvRef="UO" unitAccession="UO:0000266" unitName="electronvolt"/>
+</activation>
+</precursor>
+</precursorList>
+<binaryDataArrayList count="2">
+<binaryDataArray encodedLength="712">
+<cvParam cvRef="MS" accession="MS:1000574" name="zlib compression"/>
+<cvParam cvRef="MS" accession="MS:1000514" name="m/z array" value="" unitCvRef="MS" unitAccession="MS:1000040" unitName="m/z"/>
+<cvParam cvRef="MS" accession="MS:1000521" name="32-bit float"/>
+<binary>eNoNy01IUwEAwPEKora9vb2vua1GJ80oiMq0Ipj6/mBZyrqUHxCBld2yNCHJykA33dvb1DloW5RTD2lgVCAEQlEYiEUl5kfe0jTI6hJGIpb33++j+lTP9Q7px+RxfaN3QTc93/Qd7lXd5lzTz3nX9PfCBvxbNrFotzEmCIxJIv/sLlYFNysON4M2D6Oih3HZg03exqiQyaSYxQtpJ8+UbHq1XXwS9zMiHSDhyOGDksMT7SBDzlyWJR+TjnxqlHzG5AIWtAIa7IV0qIXcdejUyeCTjvNXLuaxdIJp5SR7lBIWtRLa1VLuiP715+eVeoov8mn2yWfoU8pYcpYRlMvxOMtJqBXMZFTQ4K6kUjnLZ6mKzVoVy8p5prQLPFcvMq5Vo3qq+S1d5pFSw6x2hcmMq4TdtQRdddz3XKNMqeercoNLSiOvtUZeqjcZdt5i2HWbWUsTpUITe8UmfrY1s2BtYcpoYUYI8Ks1wEoowLQZ4K0tSI0YpNgIrvtWvreFmLMazBkGfyxh3ghhDrWFeWeGOWo16RNNjhgmI1ETryWCS4gwYI9QK0W4bkaI26MsGR3MC53Mm534rTEmxBgFRowf0Rg+oQuf2UWmLY5LjPMgFGe3NUGWkeCwkCTPTJK2pNgqpkiGUuRGU0w47pEndKOb3WSLaWKhNEXRNO22HhLhHurtvSTDDymy99Mc6We7Y4D/aEzRww==</binary>
+</binaryDataArray>
+<binaryDataArray encodedLength="592">
+<cvParam cvRef="MS" accession="MS:1000574" name="zlib compression"/>
+<cvParam cvRef="MS" accession="MS:1000515" name="intensity array" value="" unitCvRef="MS" unitAccession="MS:1000131" unitName="number of detector counts"/>
+<cvParam cvRef="MS" accession="MS:1000521" name="32-bit float"/>
+<binary>eNolkTFok1EUhU8plhS0BCypDpaAUB0sDaWUjIH37v+LShsQwarUDO0e0bHDT8XBQEvQgBkK/YuoxaUhUMhUgqRSskgF0cEhUHFxKbRDuxS/pMPlnnffPeee+5607hR9JepO8apXbtQr2uVcJVpO+Ycm7TsVk6b4l1ez7aU7xIlTs996PWrBK3GXgvsAfN8rfmsqX4WzS+2uV2bUVPjsVZhB7za8tlPO0FkkTpm1RGau8JF7St9L9K5QS4JfoTGA7jjnLXd+lwHH9B87dV6D/4APiWF6b3CfJa8Ql73SH8k/mTFFPQ+uOCXXTdllPF3Cy7/z/bVHZv/qhqkyF6ixZeqcof2FegLud/AE/E2vxr6p2hdo51qodMOr8546/JhcbpuGBsJovBYqwm+z5aOxjVBJmWqzzCuj84H6I3abNg3PBD39DLwuv3FkSj8zJS4EyqYCFZmlQfanR3/xyR7dvaN3aGwzex7eb3Sf42HJdHMkUCf2GlSoycd4GPJKfDLlLnLfh78Fer95ZX+gu+l0eGB4MRUnA+kFPdcJ/jZdJ9/j/da88m9M7bVAhVtwun/XfYMS+In/DxCLo/g=</binary>
+</binaryDataArray>
+</binaryDataArrayList>
+</spectrum>
+</spectrumList>
+</run>
+</mzML>
