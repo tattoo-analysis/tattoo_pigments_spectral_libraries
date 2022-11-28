@@ -1,4 +1,4 @@
-[![CC BY 4.0][cc-by-shield]][cc-by] 
+[![CC BY 4.0][cc-by-shield]][cc-by] [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7373359.svg)](https://doi.org/10.5281/zenodo.7373359)
 
 Data and methods are licensed under [CC BY 4.0][cc-by]
 
